@@ -1,0 +1,3 @@
+USER=root
+PROGRAM=/usr/local/bin/hsen
+SESSION=true

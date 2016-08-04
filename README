@@ -1,0 +1,146 @@
+Hosts3D 1.15 README - 10 May 11  Del Castle
+-------------------------------------------
+Website
+=======
+http://hosts3d.sourceforge.net/
+
+Introduction
+============
+Hosts3D is a 3D real-time network monitor, displaying hosts and packet traffic. Features include support for multiple sensors, analysis of packets to gather hostnames and services, configurable layout of subnetworks, recording/replaying of packet traffic, and the ability to filter packets by hosts, protocol or port.
+
+hsen (Hosts3D Sensor) is a packet capture agent which reads and sends packet header information to Hosts3D, locally or remotely. hsen also equates hostname to IP by reading DNS packets (UDP type A class IN standard query response). Multiple sensors can send information to multiple computers running Hosts3D on the same subnet via broadcast.
+
+License
+=======
+GNU General Public License Version 2
+
+Hardware Requirements
+=====================
+Scroll Mouse
+Video Card supporting OpenGL (with drivers installed)
+
+Software Requirements
+=====================
+Linux: libglfw and libpcap (and their associated dependencies)
+  Compile: g++, libglfw-dev and libpcap-dev (and their associated dependencies)
+
+Mac OS X: GLFW (http://www.glfw.org/)
+  Compile: Mac OS X SDK with GCC and GLFW
+
+FreeBSD: Standard install (hsen only)
+
+Windows: WinPcap (http://www.winpcap.org/)
+  Compile: MinGW with GLFW and WinPcap Developer's Pack
+
+Installation
+============
+Extract tarball: tar xzvf hosts3d-1.15.tar.gz
+                 cd hosts3d-1.15
+
+Linux: ./configure
+       make
+       make install (as root, sudo)
+Uninstall: make uninstall (as root, sudo)
+Alternative: ./compile-hsen (to create executable "hsen")
+             ./compile-hosts3d (to create executable "hosts3d")
+             Put executables "hsen" and "hosts3d" in /usr/local/bin/
+             Put man pages "hsen.1" and "hosts3d.1" in /usr/local/share/man/man1/
+
+Mac OS X: ./compile-hsen (to create executable "hsen")
+          ./compile-mac-hosts3d (to create executable "hosts3d")
+          Put executables "hsen" and "hosts3d" in /usr/local/bin/
+          Put man pages "hsen.1" and "hosts3d.1" in /usr/local/share/man/man1/
+
+FreeBSD: ./compile-hsen (to create executable "hsen")
+         Put executable "hsen" in /usr/bin/
+         Put man page "hsen.1" in /usr/share/man/man1/
+
+Windows: Run "compile-hsen.bat" to create executable "hsen.exe"
+         Run "compile-hosts3d.bat" to create executable "Hosts3D.exe"
+
+Firewall Configuration: hsen talks to Hosts3D via UDP port 10111.
+
+Starting
+========
+Starting order does not matter, however if hsen is running and Hosts3D is not, ICMP Port Unreachable (UDP port 10111) may be generated.
+
+Run Hosts3D: hosts3d [-f]
+             -f - Display full screen
+
+Run hsen: hsen <id> <interface/file> [<destination>] [-p] [-d]
+          id - Identify packets from a specific hsen when multiple exist (1-255)
+          interface - Listen on interface (Linux: eth0, eth1, ppp0, wlan0, etc.); or
+          file - Read packets from pcap file. Standard input is used if file is "-"
+          destination - Hosts3D IP or broadcast address (default localhost)
+          -p - Enable promiscuous mode (default disable)
+          -d - Run as daemon (default disable)
+
+Windows: hsen -d
+         -d - Display interfaces
+
+         hsen <id> <interface/file> [<destination>] [-p]
+
+To capture packets from some interfaces, or in promiscuous mode, you may have to start hsen as root (sudo). In Windows Vista, run as Administrator, even to display interfaces.
+
+For Linux/Mac OS X/FreeBSD, Hosts3D and hsen both log to syslog, check when troubleshooting.
+
+Data Files
+==========
+In Linux/Mac OS X, created in directory ".hosts3d". In Windows, created in directory "hsd-data".
+
+Hosts3D: controls.txt - Controls
+         settings-hsd - Settings
+         0network.hnl - Network Layout On-Exit
+         1network.hnl - Network Layout 1
+         2network.hnl - Network Layout 2
+         3network.hnl - Network Layout 3
+         4network.hnl - Network Layout 4
+         netpos.txt - CIDR Notation Net Position/Colour
+         traffic.hpt - Packet Traffic Record
+         tmp-hinfo-hsd - Temporary Information
+         tmp-netpos-hsd - Temporary Net Positions
+         tmp-flist-hsd - Temporary Working Directory File List
+
+Net Positions
+=============
+If a host is not a member of any net position entries, it is placed in the Grey Zone. If a host is a member of multiple net position entries, the first entry is used. Line format for net position entries is "pos net x-position y-position z-position colour", eg. "pos 123.123.123.123/32 10 0 -10 green".
+
+Positions: Grey/Red - positive x-position
+           Blue/Green - negative x-position
+           Up - positive y-position
+           Down - negative y-position
+           Grey/Blue - positive z-position
+           Red/Green - negative z-position
+
+Colours: none (where multiple colours are used), default (grey), orange, yellow, fluro, green, mint, aqua, blue, purple, violet and hold (place hosts in same position).
+
+Start/Stop Local hsen in Hosts3D (Linux/Mac OS X)
+=================================================
+If sudo is required to start/stop a local hsen, the user starting Hosts3D must be in /etc/sudoers. The default command to stop a local hsen is "killall hsen", which will kill all hsen processes.
+
+Hosts3D Help
+============
+Press H key in Hosts3D to show help.
+
+Notes
+=====
+- Support only for IPv4.
+- IP headers with options are ignored.
+- Support for packets with optionless GRE or VLAN 802.1Q encapsulation.
+- IP protocol 249 unassigned, used to identify ARP packet.
+- IP protocol 250 unassigned, used to identify fragmented IP packet.
+- In Hosts3D, by default hosts are added from packet source IP address, activate Add Destination Hosts to also add from destination IP address.
+- In Hosts3D, anomalies are a new host or host service.
+- In Hosts3D, using the menu options to move/arrange a few thousand hosts may take a few minutes.
+- In Hosts3D, deleting hosts, using the menu options to move/arrange hosts, or clearing/restoring a net layout may affect packet recording.
+- In Hosts3D, clicking a multiple host object will cycle through selecting hosts within.
+- In Hosts3D, data files from 32-bit version are incompatible with 64-bit version and vice versa.
+- In Windows, Hosts3D will stall when running a system command on selection, until commands complete. Command output is displayed in associated Command Prompt window.
+
+Reporting Bugs
+==============
+Report bugs by adding an issue on here, and I'll see if I can fix it.
+
+Copyright
+=========
+Copyright (c) 2006-2011  Del Castle

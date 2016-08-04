@@ -1,0 +1,7 @@
+To compile you need the following libraries installed
+    libglfw-dev 
+    libpcap-dev
+
+./configure
+make 
+make install

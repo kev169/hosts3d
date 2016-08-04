@@ -1,0 +1,158 @@
+1.15 (10 May 11)
+ - (All)     Fixed MinGW static linking in Windows so DLLs aren't required
+ - (All)     Removed file INSTALL
+ - (Hosts3D) Changed to static linking for GLFW so DLL isn't required
+ - (Hosts3D) Removed compiler option -lXrandr (which I thought was needed for GLFW 2.7)
+1.14 (13 Apr 11)
+ - (All)     Fixed compiler errors with latest MinGW in Windows
+ - (All)     Fixed Linux 'make' script showing library options twice
+ - (Hosts3D) Compiles with GLFW 2.7
+ - (Hosts3D) Added 2D GUI scrollbars
+ - (Hosts3D) Fixed show IP/name text not disappearing
+ - (Hosts3D) Disable 'show simulated broadcasts' if 'add destination hosts' is enabled, and vice versa
+ - (Hosts3D) Added move item up and down buttons to edit net positions
+ - (hsen)    Fixed compiler errors with FreeBSD 8.2
+ - (hsen)    By default don't run as a daemon, option -d to enable
+1.13 (26 Jul 10)
+ - (Hosts3D) Stop simulating broadcasts for 255.255.255.255
+ - (Hosts3D) Fixed broadcast mask always 0
+ - (Hosts3D) Place cursor for text input at left-click
+1.12 (12 Jul 10)
+ - (Hosts3D) Shift key works with non-alphabetic keys
+ - (Hosts3D) Y key now activates automatic link lines for all hosts
+ - (Hosts3D) Ctrl + Y key toggles automatic link lines for new hosts, L on OSD
+ - (Hosts3D) J key activates automatic link lines for selection
+ - (Hosts3D) Ctrl + J key stops automatic link lines for selection
+ - (Hosts3D) Ctrl + R key deletes link lines for all hosts
+ - (Hosts3D) P on OSD for show packets for new hosts (instead of N)
+ - (Hosts3D) F on OSD for double speed packets (instead of Z)
+ - (Hosts3D) Don't create automatic link lines for broadcast packets
+ - (Hosts3D) Host Information displays if automatic link lines active
+ - (Hosts3D) Fixed possible crash when automatic link lines active
+1.11 (29 Jun 10)
+ - (Hosts3D) Removed automatic deletion of inactive hosts
+ - (Hosts3D) Ctrl + D key now toggles add destination hosts, D on OSD
+ - (Hosts3D) Simplified OSD with B indicating simulated broadcasts is active
+ - (Hosts3D) No indication that broadcasts are present if simulated broadcasts is off
+ - (Hosts3D) Get broadcast addresses from net position entries (255.255.255.255 also)
+1.10 (25 Jun 10)
+ - (Hosts3D) Check for duplicate packet objects in latest frame
+ - (Hosts3D) More efficient check for duplicate active objects in latest frame
+ - (Hosts3D) Changed OSD AD to A for active anomaly detection, flashes when anomaly present
+ - (Hosts3D) P key now shows packets for selection
+ - (Hosts3D) Ctrl + P key now stops showing packets for selection
+ - (Hosts3D) Ctrl + T key now toggles show packet destination port
+ - (Hosts3D) Ctrl + D key toggles automatic deletion of inactive hosts, X on OSD
+ - (Hosts3D) Ctrl + U key toggles show packets for new hosts, N on OSD
+ - (Hosts3D) U, P and K no longer displayed on OSD for packet mode
+ - (Hosts3D) Host Information displays if anomaly is present, if showing packets and expiry time
+ - (Hosts3D) Fixed OSD not updating when protocol or port 0 (all) entered
+ - (Hosts3D) Fixed host disappearing (show on-active) when it has an anomaly
+ - (hsen)    FreeBSD support
+1.09 (06 Jun 10)
+ - (Hosts3D) Replaced freeglut (GLUT - Mac OS X) with GLFW
+ - (Hosts3D) No longer require pthreads
+ - (Hosts3D) Fixed 100% CPU usage
+ - (Hosts3D) Fixed make host triggering an anomaly
+ - (Hosts3D) Common controls across all OSes
+ - (Hosts3D) Fixed crash when closing in Windows
+ - (Hosts3D) Mouse scroll wheel works in Mac OS X
+ - (Hosts3D) Unable to move hosts with Ctrl + mouse movement
+ - (Hosts3D) No cross cursor
+ - (Hosts3D) Anomaly alert shape now brackets
+ - (Hosts3D) Start/Stop local hsen sudo command not auto-generated
+ - (Hosts3D) F1-F4 keys now shows packets from sensors 1-4
+ - (Hosts3D) F5 key now shows packets from all sensors
+ - (Hosts3D) F7 key now opens a packet traffic file
+ - (Hosts3D) F8 key now saves a packet traffic file
+1.08 (07 Feb 10)
+ - (Hosts3D) Fixed host not disappearing (show on-active) when packet killed before reaching host
+ - (Hosts3D) Stopped host disappearing (show on-active) when it is in selection
+ - (Hosts3D) Putting 'hold' as colour for net position entry will place hosts in same position
+1.07 (30 Nov 09)
+ - (Hosts3D) M key displays make host window
+ - (Hosts3D) Fixed selection box position with crosshair cursor
+ - (Hosts3D) Minimised sleep timers
+ - (Hosts3D) Fixed possible services anomaly detection inactivity
+ - (Hosts3D) Fixed pause animation disrupting input cursor and record/replay time
+ - (Hosts3D) Fixed identifying default 2D GUI button when multiple exist
+ - (hsen)    Allow 0.0.0.0 destination address
+1.06 (25 Oct 09)
+ - (Hosts3D) Controls window now called help window
+ - (Hosts3D) Put packet legend in help window
+ - (Hosts3D) Improved font readability
+ - (Hosts3D) Put "posse" logo in about window
+ - (Hosts3D) Fixed possible anomaly detection inactivity
+ - (Hosts3D) Changed default settings to show all packets and alert on-active
+ - (Hosts3D) Display red AD when anomaly detection active
+ - (Hosts3D) Improved 2D GUI scrolling
+ - (Hosts3D) Stopped hiding background text when menu displayed
+ - (Hosts3D) Fixed compile errors by adding option -lX11
+1.05 (06 Oct 09)
+ - (Hosts3D) More efficient font and font display system
+ - (Hosts3D) Modified 2D GUI to accommodate new font
+ - (Hosts3D) Flashing cursor for text input
+ - (Hosts3D) Changed mouse pointer to arrow in 2D GUI
+ - (Hosts3D) Free OpenGL display lists on exit
+ - (Hosts3D) Replaced red anomaly detection active box with red letter A
+1.04 (21 Sep 09)
+ - (All)     Mac OS X support
+ - (Hosts3D) Fixed XOpenDisplay by including XCloseDisplay when displaying fullscreen
+ - (Hosts3D) Replaced pkill with killall in default stop local hsen command
+ - (Hosts3D) Use atexit to run cleanup on close
+ - (Hosts3D) Added promiscuous mode checkbox to start local hsen
+ - (hsen)    Use total length in IP header for packet size
+ - (hsen)    By default disable promiscuous mode, option -p to enable
+ - (hsen)    Install in /usr/local/bin/
+ - (hsen)    Manual page /usr/local/share/man/man1/hsen.1
+ - (hsen)    PPP header support
+ - NOTE: Delete /usr/local/sbin/hsen and /usr/local/share/man/man8/hsen.8
+1.03 (02 Sep 09)
+ - (Hosts3D) Fixed compile errors by adding options -lGL -lGLU
+ - (hsen)    Can compile in Windows with MinGW
+1.02 (25 Jul 09)
+ - (Hosts3D) Fixed crash with mouse scroll wheel in some 2D GUI scenarios
+ - (Hosts3D) Fixed crash with cut/copy text in some 2D GUI scenarios
+ - (Hosts3D) Delete key no longer clears input text
+1.01 (21 Jul 09)
+ - (Hosts3D) New menu system
+ - (Hosts3D) 2D GUI mouseover colour change effect
+ - (Hosts3D) Option to enter days, hours or minutes for selecting inactive hosts
+ - (Hosts3D) Fixed 2D GUI window focus when there are multiple windows
+ - (hsen)    Increased snaplen by 2 to account for VLAN header
+1.00 (20 Jun 09)
+ - (Hosts3D) Changed wording 'on-collision' to 'on-active'
+ - (Hosts3D) Shift + Up/Down/Left/Right keys moves at triple speed
+ - (Hosts3D) Removed useless J key jumps to mirrored view
+ - (hsen)    Support for packets with optionless GRE or VLAN 802.1Q encapsulation
+ - (hsen)    IP headers with options are ignored
+ - (hsen)    Fragmented packets are marked as such
+0.99 (19 May 09)
+ - (Hosts3D) Fixed hide menu when selecting menu item 'stop local hsen'
+ - (Hosts3D) Fixed show host and IP/name on collision time to 10 seconds (could have been less)
+ - (Hosts3D) Option to select hosts with no traffic for over 5 minutes, 1 hour, 1 day, 1 week or 1 month (31 days)
+ - (Hosts3D) Ctrl + S key inverts selection
+ - (Hosts3D) Can enter custom stop local hsen command
+ - (Hosts3D) Stopped renaming data files directory .homestead to .hosts3d
+ - (Hosts3D) Only one network layout save format used
+ - (Hosts3D) Stopped creating controls.txt file on every startup
+ - (Hosts3D) File dialogs only list files with the required extension
+ - (hsen)    Fixed crash when killing hsen in Ubuntu 9.04
+ - NOTE: Hosts3D 0.99 only works with hsen 0.99 and vice versa
+0.98 (03 Apr 09)
+ - (All)     Changed contact email address to hosts3d@gmail.com
+ - (All)     Updated build scripts
+ - (Hosts3D) Fixed network prefix 0 with CIDR notation
+ - (Hosts3D) Fixed left-click not de-selecting after menu
+ - (Hosts3D) Fixed crash when Tab key pressed in some 2D GUI scenarios
+ - (Hosts3D) Display full screen with command option -f
+0.97 (06 Feb 09)
+ - (Hosts3D) Ctrl + K key now acknowledges all anomalies
+ - (Hosts3D) Ctrl + P key toggles show packet destination port
+ - (Hosts3D) Option to arrange selection into default, 10x10 or 10x10 with double spacing blocks
+ - (Hosts3D) Hide 'all zeros' MAC addresses generated from ppp connections
+ - (Hosts3D) Replaced menu item 'clear all link lines' with 'reset link lines for selection'
+ - (Hosts3D) Increased selection buffer from 20000 to 50000
+0.96 (07 Jan 09)
+ - (All)     Renamed Homestead to Hosts3D
+ - NOTE: Delete /usr/local/bin/homestead and /usr/local/share/man/man1/homestead.1

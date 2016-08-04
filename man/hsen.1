@@ -1,0 +1,56 @@
+.TH HSEN 1 "13 Apr 11"
+.SH NAME
+hsen \- hosts3d sensor
+.SH SYNOPSIS
+.B hsen \fIid interface/file \fR[\fIdestination\fR] [\fB\-p\fR] [\fB\-d\fR]
+.SH DESCRIPTION
+.B hsen
+is a packet capture agent which reads and sends packet header
+information to Hosts3D, locally or remotely.  hsen also equates
+hostname to IP by reading DNS packets (UDP type A class IN standard
+query response).  Multiple sensors can send information to multiple
+computers running Hosts3D on the same subnet via broadcast.
+.TP 13
+.I id
+Identify packets from a specific hsen when multiple exist (1-255).
+.TP 13
+.I interface
+Listen on interface (eth0, eth1, ppp0, wlan0, etc.); or
+.TP 13
+.I file
+Read packets from pcap file.  Standard input is used if file is "\-".
+.TP 13
+.I destination
+Hosts3D IP or broadcast address (default localhost).
+.TP
+.B \-p
+Enable promiscuous mode (default disable).
+.TP
+.B \-d
+Run as daemon (default disable).
+.SH NOTES
+Firewall configuration: hsen talks to Hosts3D via UDP port 10111.  If
+hsen is running and Hosts3D is not, ICMP Port Unreachable (UDP port
+10111) may be generated.  To capture packets from some interfaces, or
+in promiscuous mode, you may have to start hsen as root (sudo).  hsen
+logs to syslog, check when troubleshooting.  Support only for IPv4.
+IP headers with options are ignored.  Support for packets with
+optionless GRE or VLAN 802.1Q encapsulation.
+.SH "SEE ALSO"
+hosts3d(1)
+.SH AUTHOR
+Written by Del Castle.
+.SH "REPORTING BUGS"
+Report bugs to <hosts3d@gmail.com>.
+.SH COPYRIGHT
+Copyright (c) 2006-2011  Del Castle
+.br
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+.br
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.

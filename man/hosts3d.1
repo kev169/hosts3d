@@ -1,0 +1,123 @@
+.TH HOSTS3D 1 "13 Apr 11"
+.SH NAME
+hosts3d \- 3D real-time network monitor
+.SH SYNOPSIS
+.B hosts3d \fR[\fB\-f\fR]
+.SH DESCRIPTION
+.B Hosts3D
+is a 3D real-time network monitor, displaying hosts and packet
+traffic.  Features include support for multiple sensors, analysis of
+packets to gather hostnames and services, configurable layout of
+subnetworks, recording/replaying of packet traffic, and the ability to
+filter packets by hosts, protocol or port.
+.TP
+.B \-f
+Display full screen.
+.P
+Press H key in Hosts3D to show help.
+.SH "DATA FILES"
+Created in directory ".hosts3d/".
+.TP 16
+.I controls.txt
+Controls
+.TP 16
+.I settings-hsd
+Settings
+.TP 16
+.I 0network.hnl
+Network Layout On-Exit
+.TP 16
+.I 1network.hnl
+Network Layout 1
+.TP 16
+.I 2network.hnl
+Network Layout 2
+.TP 16
+.I 3network.hnl
+Network Layout 3
+.TP 16
+.I 4network.hnl
+Network Layout 4
+.TP 16
+.I netpos.txt
+CIDR Notation Net Position/Colour
+.TP 16
+.I traffic.hpt
+Packet Traffic Record
+.TP 16
+.I tmp-hinfo-hsd
+Temporary Information
+.TP 16
+.I tmp-netpos-hsd
+Temporary Net Positions
+.TP 16
+.I tmp-flist-hsd
+Temporary Working Directory File List
+.SH "NET POSITIONS"
+If a host is not a member of any net position entries, it is placed in
+the Grey Zone.  If a host is a member of multiple net position
+entries, the first entry is used.  Line format for net position
+entries is "pos net x-position y-position z-position colour",
+.br
+eg. "pos 123.123.123.123/32 10 0 \-10 green".
+.P
+.I Positions:
+.TP 12
+Grey/Red
+positive x-position
+.TP 12
+Blue/Green
+negative x-position
+.TP 12
+Up
+positive y-position
+.TP 12
+Down
+negative y-position
+.TP 12
+Grey/Blue
+positive z-position
+.TP 12
+Red/Green
+negative z-position
+.P
+.I Colours:
+.P
+none (where multiple colours are used), default (grey), orange,
+yellow, fluro, green, mint, aqua, blue, purple, violet and hold (place
+hosts in same position).
+.SH "START/STOP LOCAL hsen"
+If sudo is required to start/stop a local hsen, the user starting
+Hosts3D must be in /etc/sudoers.  The default command to stop a local
+hsen is "killall hsen", which will kill all hsen processes.
+.SH NOTES
+Firewall configuration: hsen talks to Hosts3D via UDP port 10111.  If
+hsen is running and Hosts3D is not, ICMP Port Unreachable (UDP port
+10111) may be generated.  Hosts3D logs to syslog, check when
+troubleshooting.  By default hosts are added from packet source IP
+address, activate Add Destination Hosts to also add from destination
+IP address.  Anomalies are a new host or host service.  Using the menu
+options to move/arrange a few thousand hosts may take a few minutes.
+Deleting hosts, using the menu options to move/arrange hosts, or
+clearing/restoring a net layout may affect packet recording.  Clicking
+a multiple host object will cycle through selecting hosts within.
+Data files from 32-bit version are incompatible with 64-bit version
+and vice versa.
+.SH "SEE ALSO"
+hsen(1)
+.SH AUTHOR
+Written by Del Castle.
+.SH "REPORTING BUGS"
+Report bugs to <hosts3d@gmail.com>.
+.SH COPYRIGHT
+Copyright (c) 2006-2011  Del Castle
+.br
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+.br
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.

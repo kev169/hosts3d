@@ -1,0 +1,14 @@
+# /etc/default/hsen
+# hsen init.d script options
+#
+# Sensor ID  (1-255)
+SENID=1
+#
+# Interface/File  (eth1, ppp0, wlan0, etc.)
+IFACE=eth0
+#
+# Hosts3D Destination  (Blank = localhost)
+DESTN=
+#
+# Promiscuous Mode  (-p = Enable, Blank = Disable)
+PROMS=
